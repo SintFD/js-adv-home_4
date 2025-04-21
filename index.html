@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="./index.js" type="module" defer></script>
+    <style>
+      body {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      form {
+        background-color: rgba(53, 53, 53, 0.6);
+        position: absolute;
+        top: 0;
+        width: 100vw;
+        height: 100vh;
+        display: none;
+      }
+      .form-container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: grid;
+        gap: 20px;
+        justify-items: center;
+        border: 2px solid red;
+        padding: 15px 30px;
+        border-radius: 20px;
+        background-color: white;
+      }
+      .shut {
+        justify-self: end;
+      }
+      /* 
+      .list {
+        width: min-content;
+        margin: 0 auto;
+        padding: 0;
+        list-style: none;
+        display: grid;
+        gap: 20px;
+      } */
+
+      .list-container {
+        width: max-content;
+        margin: 20px auto;
+        display: grid;
+        gap: 20px;
+      }
+
+      th,
+      td {
+        border: 1px solid black;
+        padding: 10px;
+      }
+      tbody td:last-child:hover {
+        cursor: pointer;
+        background-color: gray;
+      }
+
+      tbody td:last-child:active {
+        background-color: rgb(94, 92, 92);
+      }
+
+      th:not(:last-child):hover {
+        cursor: pointer;
+        background-color: gray;
+      }
+
+      th:not(:last-child):active {
+        background-color: rgb(94, 92, 92);
+      }
+
+      tfoot td {
+        background-color: rgb(175, 68, 29);
+        color: white;
+      }
+      .add {
+        padding: 20px;
+        font-size: 20px;
+        border-radius: 50px;
+      }
+
+      .add:hover {
+        background-color: gray;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <form class="form" action="">
+      <div class="form-container">
+        <button type="reset" class="shut">X</button>
+        <label>Название: <input name="name" type="text" /></label>
+        <label>Сумма: <input name="sum" type="number" /></label>
+        <label>
+          Категория:
+          <select name="category" id="">
+            <option value="" hidden>- Выберите категорию -</option>
+            <option>Электроника</option>
+            <option>Мебель</option>
+            <option>Одежда</option>
+          </select>
+        </label>
+        <label>Дата: <input name="date" type="date" /></label>
+        <button class="send" type="submit">Отправить</button>
+      </div>
+    </form>
+
+    <div class="list-container">
+      <button class="add">Добавить</button>
+      <table>
+        <thead>
+          <tr>
+            <th>Название</th>
+            <th>Сумма</th>
+            <th class="category">Категория</th>
+            <th class="date">Дата</th>
+            <th>---</th>
+          </tr>
+        </thead>
+        <tbody class="list"></tbody>
+        <tfoot>
+          <tr>
+            <td>Fin sum: <span class="fin-sum"></span></td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  </body>
+</html>
