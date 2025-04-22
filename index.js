@@ -60,6 +60,7 @@ form.addEventListener("submit", (e) => {
       td.addEventListener("click", (e) => {
         finSum.textContent = +finSum.textContent - +tr.children[1].textContent;
         tr.remove();
+        arr = document.querySelectorAll(".new-goods");
       });
     }
 
@@ -85,8 +86,25 @@ form.addEventListener("submit", (e) => {
 });
 
 category.addEventListener("click", () => {
-  [...arr].sort();
-  //   list.innerHTML = "";
-  //   list.append()
+  const sortedArr = [...arr].toSorted((a, b) => {
+    return a.children[2].textContent.localeCompare(b.children[2].textContent);
+  });
+
+  list.innerHTML = "";
+  sortedArr.forEach((el) => {
+    list.append(el);
+  });
 });
-date.addEventListener("click", () => {});
+
+date.addEventListener("click", () => {
+  const sortedArr = [...arr].toSorted((a, b) => {
+    return (
+      new Date(a.children[3].textContent) - new Date(b.children[3].textContent)
+    );
+  });
+
+  list.innerHTML = "";
+  sortedArr.forEach((el) => {
+    list.append(el);
+  });
+});
